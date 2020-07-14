@@ -12,11 +12,22 @@ def btnClearDisplay() :
     operator = ""
     txt_input.set("")
 
+#function to clear display
 def btnEqualsInput():
     global operator
     sumup=str(eval(operator))
     txt_input.set(sumup)
     operator=""
+
+#function to backspace
+def backspace():
+        text = txt_input.get()[:-1]
+        txt_input.set(text)
+        operator=""
+
+def division():
+    global operator
+
 
 
 window =Tk()
@@ -27,12 +38,13 @@ operator=""
 window.configure(bg="#354a21")
 txt_input=StringVar()
 # zeroth row
-txtDisplay=Entry(window, font=('arial',25,'bold'),textvariable=txt_input,relief=RIDGE,bd=20,insertwidth=4,bg="#728c69", justify="right" ).grid(columnspan=4,pady=10)
+txtDisplay=Entry(window, font=('arial',25,'bold'),state=DISABLED,textvariable=txt_input,relief=RIDGE,bd=20,insertwidth=4,bg="#728c69", justify="right" ).grid(columnspan=4,pady=10)
+
 # First  row
-btn_percentage=Button(window,text="%",bg="#728c69",padx=20,bd=8,fg="black",font=('arial',19,'bold')).grid(row=1,column=0)
-btn_ce=Button(window,bg="#728c69",text="CE",padx=19,bd=8,fg="black",font=('arial',18,'bold')).grid(row=1,column=1)
-btn_clear=Button(window,bg="#728c69",text="C",padx=20,bd=8,fg="black",font=('arial',19,'bold'),command=btnClearDisplay).grid(row=1,column=2)
-btn_back_space=Button(window,bg="#728c69",text="⌫",padx=14,bd=8,fg="black",font=('arial',19,'bold')).grid(row=1,column=3)
+"""btn_percentage=Button(window,text="%",bg="#728c69",padx=20,bd=8,fg="black",font=('arial',19,'bold')).grid(row=1,column=0)
+btn_ce=Button(window,bg="#728c69",text="CE",padx=19,bd=8,fg="black",font=('arial',18,'bold')).grid(row=1,column=1)"""
+btn_clear=Button(window,bg="#728c69",text="C",padx=120,bd=8,fg="black",font=('arial',19,'bold'),command=btnClearDisplay).grid(row=1,columnspan=3)
+btn_back_space=Button(window,bg="#728c69",text="⌫",padx=14,bd=8,fg="black",font=('arial',19,'bold'),command=backspace).grid(row=1,column=3)
 # Second row
 btn7=Button(window,text="7",padx=20,bd=8,fg="black",bg="#728c69",font=('arial',20,'bold'),command=lambda : btnClick(7)).grid(row=2,column=0)
 btn8=Button(window,text="8",padx=20,bd=8,fg="black",bg="#728c69",font=('arial',20,'bold'),command=lambda : btnClick(8)).grid(row=2,column=1)
@@ -52,5 +64,5 @@ btn_mul=Button(window,text="*",padx=20,bd=8,fg="black",bg="#728c69",font=('arial
 btn_zero=Button(window,text="0",padx=20,bd=8,fg="black",bg="#728c69",font=('arial',20,'bold'),command=lambda : btnClick(0)).grid(row=5,column=0)
 btn_point=Button(window,text=".",padx=20,bd=8,fg="black",bg="#728c69",font=('arial',20,'bold'),command=lambda : btnClick(".")).grid(row=5,column=1)
 btn_equal=Button(window,text="=",padx=20,bd=8,fg="black",bg="#728c69",font=('arial',20,'bold'),command=lambda : btnEqualsInput()).grid(row=5,column=2)
-btn_div=Button(window,text="/",padx=20,bd=8,fg="black",bg="#728c69",font=('arial',20,'bold'),command=lambda : btnClick("/")).grid(row=5,column=3)
+btn_div=Button(window,text="÷",padx=20,bd=8,fg="black",bg="#728c69",font=('arial',20,'bold'),command=lambda : btnClick("/")).grid(row=5,column=3)
 window.mainloop()

@@ -14,10 +14,16 @@ def btnClearDisplay() :
 
 #function to clear display
 def btnEqualsInput():
-    global operator
-    sumup = str(eval(operator))
-    txt_input.set(sumup)
-    operator = ""
+
+    try:
+        global operator
+        sumup = str(eval(operator))
+        txt_input.set(sumup)
+        operator = ""
+    except ZeroDivisionError:
+        a="Can't divided by zero"
+        txt_input.set(a)
+        operator=""
 
 #function to backspace
 def backspace():
